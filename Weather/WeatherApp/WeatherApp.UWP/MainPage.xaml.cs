@@ -6,12 +6,14 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Weather.Forms;
+using Xamarin.Forms;
+using Page = Windows.UI.Xaml.Controls.Page;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,7 +27,8 @@ namespace WeatherApp.UWP
         public MainPage()
         {
             this.InitializeComponent();
-        }
+			HistoryFlyout.Content = new History().CreateFrameworkElement();
+		}
 
 	    private async void GetWeatherButton_Click(object sender, RoutedEventArgs e)
 	    {
@@ -46,5 +49,7 @@ namespace WeatherApp.UWP
 				}
 			}
 		}
+
+	    
     }
 }
