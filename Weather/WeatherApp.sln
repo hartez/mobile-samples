@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.WinPhone", "Weat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WeatherApp\WeatherApp\WeatherApp.csproj", "{247CE0B4-3B55-4868-AEFC-5F9134769971}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.UWP", "WeatherApp.UWP\WeatherApp.UWP.csproj", "{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.UWP", "WeatherApp\WeatherApp.UWP\WeatherApp.UWP.csproj", "{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -226,8 +226,6 @@ Global
 		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.AppStore|x86.Build.0 = Release|x86
 		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.AppStore|x86.Deploy.0 = Release|x86
 		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.Debug|Any CPU.Build.0 = Debug|x86
-		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.Debug|ARM.ActiveCfg = Debug|ARM
 		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.Debug|ARM.Build.0 = Debug|ARM
 		{0C2BDF9E-3953-43B1-A30F-7A6AEF0127E6}.Debug|ARM.Deploy.0 = Debug|ARM

@@ -127,10 +127,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WeatherApp\WeatherApp\WeatherApp.csproj">
+    <ProjectReference Include="..\WeatherApp\WeatherApp.csproj">
       <Project>{247ce0b4-3b55-4868-aefc-5f9134769971}</Project>
       <Name>WeatherApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
