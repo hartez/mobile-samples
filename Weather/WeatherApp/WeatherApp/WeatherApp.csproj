@@ -31,6 +31,7 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ApiKey.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

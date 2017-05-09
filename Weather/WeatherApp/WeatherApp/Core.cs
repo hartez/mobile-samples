@@ -8,12 +8,12 @@ namespace WeatherApp
         public static async Task<Weather> GetWeather(string zipCode)
         {
             //Sign up for a free API key at http://openweathermap.org/appid
-            string key = "YOUR API KEY HERE";
+            string key = Api.Key;
             string queryString = "http://api.openweathermap.org/data/2.5/weather?zip="
                 + zipCode + ",&appid=" + key;
 
             //Make sure developers running this sample replaced the API key
-            if (key == "YOUR API KEY HERE")
+            if (key == Api.Key)
             {
                 throw new ArgumentException("You must obtain an API key from openweathermap.org/appid and save it in the 'key' variable.");
             }
