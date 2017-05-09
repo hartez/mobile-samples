@@ -13,7 +13,7 @@ namespace WeatherApp
                 + zipCode + ",&appid=" + key;
 
             //Make sure developers running this sample replaced the API key
-            if (key == Api.Key)
+            if (key == "YOUR API KEY HERE")
             {
                 throw new ArgumentException("You must obtain an API key from openweathermap.org/appid and save it in the 'key' variable.");
             }
@@ -24,7 +24,7 @@ namespace WeatherApp
             {
                 Weather weather = new Weather();
                 weather.Title = (string)results["name"];
-                weather.Temperature = (string)results["main"]["temp"] + " F";
+                weather.Temperature = ConvertToFahrenheit((string)results["main"]["temp"]) + " F";
                 weather.Wind = (string)results["wind"]["speed"] + " mph";
                 weather.Humidity = (string)results["main"]["humidity"] + " %";
                 weather.Visibility = (string)results["weather"][0]["main"];
@@ -41,5 +41,26 @@ namespace WeatherApp
                 return null;
             }
         }
+
+	    private static string ConvertToFahrenheit(string temp)
+	    {
+		    float kelvin;
+		    if (float.TryParse(temp, out kelvin))
+		    {
+			    return CelciusToFahrenheit(KelvinToCelcius(kelvin)).ToString();
+		    }
+
+		    return string.Empty;
+	    }
+
+	    private static float KelvinToCelcius(float kelvin)
+	    {
+			return kelvin - 273;
+	    }
+
+	    private static float CelciusToFahrenheit(float celcius)
+	    {
+		    return ((celcius * 9) / 5) + 32;
+	    }
     }
 }
