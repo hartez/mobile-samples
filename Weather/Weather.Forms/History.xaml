@@ -46,5 +46,19 @@
             </ListView.ItemTemplate>
         </ListView>
         <Label Text="{Binding PlatformBlurb}"></Label>
+        <Label TextColor="Red">
+            <Label.Text>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="UWP" Value="&#xEB52;"></On>
+                    <On Platform="iOS, Android" Value="heart"></On>
+                </OnPlatform>
+            </Label.Text>
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="UWP" Value="Segoe MDL2 Assets"></On>
+                    <On Platform="iOS, Android" Value="Helvetica"></On>
+                </OnPlatform>
+            </Label.FontFamily>
+        </Label>
     </StackLayout>
 </ContentPage>
