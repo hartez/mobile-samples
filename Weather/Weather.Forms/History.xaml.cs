@@ -77,5 +77,12 @@ namespace Weather.Forms
 		public string PostalCode { get; set; }
 		public string LocationName { get; set; }
 		public string Icon { get; set; }
+
+		private string IconToFontIcon(string icon)
+		{
+			return "\xf00d";
+		}
+
+		public string FontIcon => IconToFontIcon(Icon);
 	}
 }
