@@ -20,6 +20,7 @@
             </OnIdiom>
         </StackLayout.Margin>
         <Label Text="This is Xamarin.Forms Page!" TextColor="BlueViolet" ></Label>
+        <Label Text="Location History" FontSize="Large" TextColor="Black" ></Label>
         <ListView x:Name="HistoryItems" VerticalOptions="Fill">
             <ListView.ItemTemplate>
                 <DataTemplate>
