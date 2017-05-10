@@ -45,20 +45,27 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label Text="{Binding PlatformBlurb}"></Label>
-        <Label TextColor="Red">
-            <Label.Text>
-                <OnPlatform x:TypeArguments="x:String">
-                    <On Platform="UWP" Value="&#xEB52;"></On>
-                    <On Platform="iOS, Android" Value="heart"></On>
-                </OnPlatform>
-            </Label.Text>
-            <Label.FontFamily>
-                <OnPlatform x:TypeArguments="x:String">
-                    <On Platform="UWP" Value="Segoe MDL2 Assets"></On>
-                    <On Platform="iOS, Android" Value="Helvetica"></On>
-                </OnPlatform>
-            </Label.FontFamily>
-        </Label>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding PlatformName}" VerticalTextAlignment="Center"></Label>
+            <Label TextColor="Red" VerticalTextAlignment="Center">
+                <Label.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="UWP" Value="&#xEB52;"></On>
+                        <On Platform="iOS" Value="&#xf004;"></On>
+                        <On Platform="Android" Value="&#xf004;"></On>
+                    </OnPlatform>
+                </Label.Text>
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="UWP" Value="Segoe MDL2 Assets"></On>
+                        <On Platform="iOS" Value="FontAwesome"></On>
+                        <On Platform="Android" Value="FontAwesome.otf#FontAwesome"></On>
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <Label Text=" Xamarin.Forms" VerticalTextAlignment="Center"></Label>
+        </StackLayout>
+        
+        
     </StackLayout>
 </ContentPage>

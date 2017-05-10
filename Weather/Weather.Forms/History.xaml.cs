@@ -21,7 +21,7 @@ namespace Weather.Forms
 			BindingContext = this;
 		}
 
-		public string PlatformBlurb => $"{Device.RuntimePlatform} :hearts: Xamarin.Forms";
+		public string PlatformName => $"{Device.RuntimePlatform} ";
 
 		private void HistoryItemsOnItemTapped(object sender, ItemTappedEventArgs itemTappedEventArgs)
 		{

@@ -48,5 +48,9 @@
 	<string>Resources/Images.xcassets/LaunchImage.launchimage</string>
 	<key>CFBundleName</key>
 	<string>Weather</string>
+	<key>UIAppFonts</key>
+  <array>
+	  <string>FontAwesome.ttf</string>
+  </array>
 </dict>
 </plist>
