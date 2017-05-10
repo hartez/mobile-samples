@@ -34,7 +34,8 @@ namespace WeatherApp
                 DateTime sunset = time.AddSeconds((double)results["sys"]["sunset"]);
                 weather.Sunrise = sunrise.ToString() + " UTC";
                 weather.Sunset = sunset.ToString() + " UTC";
-                return weather;
+				weather.Icon = (string)results["weather"][0]["icon"];
+				return weather;
             }
             else
             {

@@ -19,8 +19,7 @@
                 </OnIdiom.Tablet>
             </OnIdiom>
         </StackLayout.Margin>
-        <Label Text="This is Xamarin.Forms Page!" TextColor="BlueViolet" ></Label>
-        <Label Text="Location History" FontSize="Large" TextColor="Black" ></Label>
+        <Label Text="Your Places" FontSize="Large" TextColor="Black" ></Label>
         <ListView x:Name="HistoryItems" VerticalOptions="Fill">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -30,8 +29,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding PostalCode}"></Label>
-                            <Label Text="{Binding DateTime}" Grid.Column="1"></Label>
+                            <Label Text="{Binding LocationName}"></Label>
+                            <Label Text="{Binding PostalCode}" Grid.Column="1"></Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

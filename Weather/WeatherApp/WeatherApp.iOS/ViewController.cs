@@ -55,7 +55,8 @@ namespace WeatherApp.iOS
 					sunsetText.Text = weather.Sunset;
 
 					// Let the history tracker know that the user just successfully looked up a postal code
-					MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, zipCodeEntry.Text);
+					var item = new HistoryItem(zipCodeEntry.Text, weather.Title, weather.IconUrl);
+					MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, item);
 				}
 			}
 		}

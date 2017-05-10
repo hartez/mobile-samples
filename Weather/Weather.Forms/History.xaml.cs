@@ -41,23 +41,37 @@ namespace Weather.Forms
 
 		public HistoryRecorder()
 		{
-			MessagingCenter.Subscribe<HistoryRecorder, string>(this, LocationSubmitted,
-				(recorder, postalCode) => LocationHistory.Add(new HistoryItem { DateTime = DateTime.Now, PostalCode = postalCode }));
+			MessagingCenter.Subscribe<HistoryRecorder, HistoryItem>(this, LocationSubmitted,
+				(recorder, historyItem) => LocationHistory.Add(historyItem));
 		}
 
 		public static ObservableCollection<HistoryItem> LocationHistory = new ObservableCollection<HistoryItem>
 		{
-			new HistoryItem {DateTime = DateTime.Now.AddHours(-4), PostalCode = "46901"},
-			new HistoryItem {DateTime = DateTime.Now.AddHours(-3), PostalCode = "47803"},
-			new HistoryItem {DateTime = DateTime.Now.AddHours(-2), PostalCode = "90210"},
-			new HistoryItem {DateTime = DateTime.Now.AddHours(-1), PostalCode = "80021"},
-			new HistoryItem {DateTime = DateTime.Now.AddMinutes(-25), PostalCode = "80203"}
+			new HistoryItem(DateTime.Now.AddHours(-4), "46901", "Howard Country", "http://openweathermap.org/img/w/{0}.png"),
+			new HistoryItem(DateTime.Now.AddHours(-3), "47803", "Terre Haute", "http://openweathermap.org/img/w/{0}.png"),
+			new HistoryItem(DateTime.Now.AddHours(-2), "90210", "Beverly Hills", "http://openweathermap.org/img/w/{0}.png"),
+			new HistoryItem(DateTime.Now.AddHours(-1), "80021", "Broomfield", "http://openweathermap.org/img/w/{0}.png"),
+			new HistoryItem(DateTime.Now.AddMinutes(-42), "80203", "Denver", "http://openweathermap.org/img/w/{0}.png"),
 		};
 	}
 
 	public class HistoryItem
 	{
+		internal HistoryItem(DateTime dateTime, string postalCode, string locationName, string icon)
+		{
+			DateTime = dateTime;
+			PostalCode = postalCode;
+			LocationName = locationName;
+			Icon = icon;
+		}
+
+		public HistoryItem(string postalCode, string locationName, string icon) : this(DateTime.Now, postalCode, locationName, icon)
+		{
+		}
+
 		public DateTime DateTime { get; set; }
 		public string PostalCode { get; set; }
+		public string LocationName { get; set; }
+		public string Icon { get; set; }
 	}
 }
