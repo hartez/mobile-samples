@@ -58,7 +58,7 @@
                 <TextBlock x:Name="windText" Style="{StaticResource Data}" />
                 <TextBlock Style="{StaticResource Label}" Text="Humidity" />
                 <TextBlock x:Name="humidityText" Style="{StaticResource Data}" />
-                <TextBlock Style="{StaticResource Label}" Text="Temperature" />
+                <TextBlock Style="{StaticResource Label}" Text="Visibility" />
                 <TextBlock x:Name="visibilityText" Style="{StaticResource Data}" />
                 <TextBlock Style="{StaticResource Label}" Text="Time of Sunrise" />
                 <TextBlock x:Name="sunriseText" Style="{StaticResource Data}" />

@@ -28,14 +28,16 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding LocationName}"></Label>
-                            <Label Text="{Binding PostalCode}" Grid.Column="1"></Label>
+                            <Label Text="{Binding LocationName}" VerticalOptions="Center"></Label>
+                            <Label Text="{Binding PostalCode}" VerticalOptions="Center" Grid.Column="1"></Label>
+                            <Image Source="{Binding Icon}" Grid.Column="2"></Image>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        <Label Text="{Binding PlatformBlurb}"></Label>
     </StackLayout>
 </ContentPage>
