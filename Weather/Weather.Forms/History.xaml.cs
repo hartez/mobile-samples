@@ -53,9 +53,9 @@ namespace Weather.Forms
 		{
 			new HistoryItem(DateTime.Now.AddHours(-4), "46901", "Howard County", "http://openweathermap.org/img/w/03d.png"),
 			new HistoryItem(DateTime.Now.AddHours(-3), "47803", "Terre Haute", "http://openweathermap.org/img/w/03d.png"),
-			new HistoryItem(DateTime.Now.AddHours(-2), "90210", "Beverly Hills", "http://openweathermap.org/img/w/03d.png"),
+			new HistoryItem(DateTime.Now.AddHours(-2), "90210", "Beverly Hills", "http://openweathermap.org/img/w/02d.png"),
 			new HistoryItem(DateTime.Now.AddHours(-1), "80021", "Broomfield", "http://openweathermap.org/img/w/03d.png"),
-			new HistoryItem(DateTime.Now.AddMinutes(-42), "80203", "Denver", "http://openweathermap.org/img/w/03d.png"),
+			new HistoryItem(DateTime.Now.AddMinutes(-42), "80203", "Denver", "http://openweathermap.org/img/w/10d.png"),
 		};
 	}
 

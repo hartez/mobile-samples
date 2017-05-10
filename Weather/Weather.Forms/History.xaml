@@ -19,7 +19,14 @@
                 </OnIdiom.Tablet>
             </OnIdiom>
         </StackLayout.Margin>
-        <Label Text="Your Places" FontSize="Large" TextColor="Black" ></Label>
+        <Label Text="Your Places" FontSize="Large">
+            <Label.TextColor>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="Android" Value="Gray"></On>
+                        <On Platform="UWP, iOS" Value="Black"></On>
+                    </OnPlatform>
+            </Label.TextColor>
+        </Label>
         <ListView x:Name="HistoryItems" VerticalOptions="Fill">
             <ListView.ItemTemplate>
                 <DataTemplate>
