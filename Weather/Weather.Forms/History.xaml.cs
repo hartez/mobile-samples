@@ -30,11 +30,6 @@ namespace Weather.Forms
 
 			MessagingCenter.Send(this, HistoryItemSelected, historyItem.PostalCode);
 		}
-
-		private void Button_OnClicked(object sender, EventArgs e)
-		{
-			MessagingCenter.Send(this, HistoryItemSelected, "46901");
-		}
 	}
 
 	public class HistoryRecorder

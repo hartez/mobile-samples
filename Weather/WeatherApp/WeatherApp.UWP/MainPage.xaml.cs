@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -28,9 +30,23 @@ namespace WeatherApp.UWP
         {
             this.InitializeComponent();
 			HistoryFlyout.Content = new History().CreateFrameworkElement();
+
+			MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, s) =>
+			{
+				Flyout.Hide();
+				SetPostalCode(s);
+			});
 		}
 
-	    private async void GetWeatherButton_Click(object sender, RoutedEventArgs e)
+		public static readonly DependencyProperty IsHistoryOpenProperty = DependencyProperty.RegisterAttached("IsHistoryOpen", typeof(bool), typeof(Flyout), null);
+
+		public async void SetPostalCode(string postalCode)
+		{
+			zipCodeEntry.Text = postalCode;
+			await GetWeather();
+		}
+
+	    private async Task GetWeather()
 	    {
 			if (!String.IsNullOrEmpty(zipCodeEntry.Text))
 			{
@@ -46,10 +62,15 @@ namespace WeatherApp.UWP
 					sunsetText.Text = weather.Sunset;
 
 					weatherBtn.Content = "Search Again";
+
+					MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, zipCodeEntry.Text);
 				}
 			}
 		}
 
-	    
+	    private async void GetWeatherButton_Click(object sender, RoutedEventArgs e)
+	    {
+		    await GetWeather();
+	    }
     }
 }
