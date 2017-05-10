@@ -6,5 +6,23 @@
         <Label Text="Forms!"></Label>
         <Label Text="Forms!" TextColor="BlueViolet" ></Label>
         <Button Text="Test" Clicked="Button_OnClicked"></Button>
+
+        <ListView x:Name="HistoryItems">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding PostalCode}"></Label>
+                            <Label Text="{Binding DateTime}" Grid.Column="1"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </StackLayout>
 </ContentPage>

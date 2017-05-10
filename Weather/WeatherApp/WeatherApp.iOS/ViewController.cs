@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using CoreGraphics;
 using UIKit;
+using Weather.Forms;
+using Xamarin.Forms;
 
 namespace WeatherApp.iOS
 {
@@ -51,6 +53,8 @@ namespace WeatherApp.iOS
 					humidityText.Text = weather.Humidity;
 					sunriseText.Text = weather.Sunrise;
 					sunsetText.Text = weather.Sunset;
+
+					MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, zipCodeEntry.Text);
 				}
 			}
 		}
