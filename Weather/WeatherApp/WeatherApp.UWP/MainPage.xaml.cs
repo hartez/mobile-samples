@@ -29,12 +29,15 @@ namespace WeatherApp.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+			// Crate a XF History page and drop it into a flyout from the command bar
 			HistoryFlyout.Content = new History().CreateFrameworkElement();
 
-			MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, s) =>
+			// Listen for lookup requests from the history tracker
+			MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, postalCode) =>
 			{
 				Flyout.Hide();
-				SetPostalCode(s);
+				SetPostalCode(postalCode);
 			});
 		}
 
@@ -63,6 +66,7 @@ namespace WeatherApp.UWP
 
 					weatherBtn.Content = "Search Again";
 
+					// Let the history tracker know that the user just successfully looked up a postal code
 					MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, zipCodeEntry.Text);
 				}
 			}

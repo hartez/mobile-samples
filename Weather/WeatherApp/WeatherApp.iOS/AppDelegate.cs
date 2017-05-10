@@ -18,6 +18,7 @@ namespace WeatherApp.iOS
 		UINavigationController _navigation;
 		UIBarButtonItem _aboutButton;
 		ViewController _weatherController;
+		UIViewController _history;
 
 		public UIBarButtonItem CreateAboutButton()
 		{
@@ -34,7 +35,14 @@ namespace WeatherApp.iOS
 
 		public void ShowAbout()
 		{
-			_navigation.PushViewController(new History().CreateViewController(), true);
+			// Create a XF History page as a view controller
+			if (_history == null)
+			{
+				_history = new History().CreateViewController();
+			}
+
+			// And push it onto the navigation stack
+			_navigation.PushViewController(_history, true);
 		}
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
@@ -52,10 +60,11 @@ namespace WeatherApp.iOS
 			_weatherController = Storyboard.InstantiateInitialViewController() as ViewController;
 			_navigation = new UINavigationController(_weatherController);
 
-			MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, s) =>
+			// Listen for lookup requests from the history tracker
+			MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, postalCode) =>
 			{
 				_navigation.PopToRootViewController(true);
-				_weatherController.SetPostalCode(s);
+				_weatherController.SetPostalCode(postalCode);
 			});
 
 			_window.RootViewController = _navigation;

@@ -54,6 +54,7 @@ namespace WeatherApp.iOS
 					sunriseText.Text = weather.Sunrise;
 					sunsetText.Text = weather.Sunset;
 
+					// Let the history tracker know that the user just successfully looked up a postal code
 					MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, zipCodeEntry.Text);
 				}
 			}

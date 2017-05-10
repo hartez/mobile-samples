@@ -44,14 +44,17 @@ namespace WeatherApp.Droid
 			}
 		}
 
-		public void ShowAbout()
+		public void ShowHistory()
 		{
+			// Create a XF History page as a fragment
 			if (_history == null)
 			{
 				Forms.Init(this, null);
 				_history = new History().CreateFragment(this);
 			}
 
+
+			// And push that fragment onto the stack
 			FragmentTransaction ft = FragmentManager.BeginTransaction();
 
 			ft.AddToBackStack(null);
@@ -62,7 +65,7 @@ namespace WeatherApp.Droid
 
 		public class MainFragment : Fragment
 		{
-			private string lastPostalCode;
+			private string _lastPostalCode;
 
 			public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 			{
@@ -71,10 +74,11 @@ namespace WeatherApp.Droid
 
 				button.Click += Button_Click;
 
-				MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, s) =>
+				// Listen for lookup requests from the history tracker
+				MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, postalCode) =>
 				{
 					Activity.FragmentManager.PopBackStack();
-					lastPostalCode = s;
+					_lastPostalCode = postalCode;
 				});
 
 				return view;
@@ -95,10 +99,10 @@ namespace WeatherApp.Droid
 			public override void OnResume()
 			{
 				base.OnResume();
-				if (!string.IsNullOrEmpty(lastPostalCode))
+				if (!string.IsNullOrEmpty(_lastPostalCode))
 				{
-					SetPostalCode(lastPostalCode);
-					lastPostalCode = String.Empty;
+					SetPostalCode(_lastPostalCode);
+					_lastPostalCode = String.Empty;
 				}
 			}
 
@@ -107,7 +111,7 @@ namespace WeatherApp.Droid
 				switch (item.ItemId)
 				{
 					case Resource.Id.history_menu_item:
-						((MainActivity)Activity).ShowAbout();
+						((MainActivity)Activity).ShowHistory();
 						return true;
 				}
 
@@ -138,6 +142,7 @@ namespace WeatherApp.Droid
 						View.FindViewById<TextView>(Resource.Id.sunriseText).Text = weather.Sunrise;
 						View.FindViewById<TextView>(Resource.Id.sunsetText).Text = weather.Sunset;
 
+						// Let the history tracker know that the user just successfully looked up a postal code
 						MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, zipCodeEntry.Text);
 					}
 				}
