@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Widget;
@@ -61,12 +62,20 @@ namespace WeatherApp.Droid
 
 		public class MainFragment : Fragment
 		{
+			private string lastPostalCode;
+
 			public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 			{
 				var view =  inflater.Inflate(Resource.Layout.MainFragment, container, false);
 				Button button = view.FindViewById<Button>(Resource.Id.weatherBtn);
 
 				button.Click += Button_Click;
+
+				MessagingCenter.Subscribe<History, string>(this, History.HistoryItemSelected, (history, s) =>
+				{
+					Activity.FragmentManager.PopBackStack();
+					lastPostalCode = s;
+				});
 
 				return view;
 			}
@@ -83,6 +92,16 @@ namespace WeatherApp.Droid
 				SetHasOptionsMenu(true);
 			}
 
+			public override void OnResume()
+			{
+				base.OnResume();
+				if (!string.IsNullOrEmpty(lastPostalCode))
+				{
+					SetPostalCode(lastPostalCode);
+					lastPostalCode = String.Empty;
+				}
+			}
+
 			public override bool OnOptionsItemSelected(IMenuItem item)
 			{
 				switch (item.ItemId)
@@ -95,7 +114,14 @@ namespace WeatherApp.Droid
 				return base.OnOptionsItemSelected(item);
 			}
 
-			private async void Button_Click(object sender, EventArgs e)
+			public async void SetPostalCode(string postalCode)
+			{
+				EditText zipCodeEntry = View.FindViewById<EditText>(Resource.Id.zipCodeEntry);
+				zipCodeEntry.Text = postalCode;
+				await GetWeather();
+			}
+
+			private async Task GetWeather()
 			{
 				EditText zipCodeEntry = View.FindViewById<EditText>(Resource.Id.zipCodeEntry);
 
@@ -111,8 +137,15 @@ namespace WeatherApp.Droid
 						View.FindViewById<TextView>(Resource.Id.humidityText).Text = weather.Humidity;
 						View.FindViewById<TextView>(Resource.Id.sunriseText).Text = weather.Sunrise;
 						View.FindViewById<TextView>(Resource.Id.sunsetText).Text = weather.Sunset;
+
+						MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, zipCodeEntry.Text);
 					}
 				}
+			}
+
+			private async void Button_Click(object sender, EventArgs e)
+			{
+				await GetWeather();
 			}
 		}
 	}

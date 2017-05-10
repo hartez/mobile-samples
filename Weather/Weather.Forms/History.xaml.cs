@@ -51,7 +51,7 @@ namespace Weather.Forms
 			new HistoryItem {DateTime = DateTime.Now.AddHours(-3), PostalCode = "47803"},
 			new HistoryItem {DateTime = DateTime.Now.AddHours(-2), PostalCode = "90210"},
 			new HistoryItem {DateTime = DateTime.Now.AddHours(-1), PostalCode = "80021"},
-			new HistoryItem {DateTime = DateTime.Now.AddMinutes(-25), PostalCode = "34534"}
+			new HistoryItem {DateTime = DateTime.Now.AddMinutes(-25), PostalCode = "80203"}
 		};
 	}
 
