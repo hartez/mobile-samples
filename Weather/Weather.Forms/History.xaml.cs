@@ -16,5 +16,12 @@ namespace Weather.Forms
 		{
 			InitializeComponent();
 		}
+
+		public const string HistoryItemSelected = "HistoryItemSelected";
+
+		private void Button_OnClicked(object sender, EventArgs e)
+		{
+			MessagingCenter.Send(this, HistoryItemSelected, "46901");
+		}
 	}
 }
