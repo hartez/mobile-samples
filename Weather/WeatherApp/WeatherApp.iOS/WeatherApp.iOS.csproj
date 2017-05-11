@@ -165,6 +165,9 @@
     <BundleResource Include="Resources\FontAwesome.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\WeatherIcons.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

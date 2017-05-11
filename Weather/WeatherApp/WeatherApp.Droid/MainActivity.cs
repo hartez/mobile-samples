@@ -143,7 +143,7 @@ namespace WeatherApp.Droid
 						View.FindViewById<TextView>(Resource.Id.sunsetText).Text = weather.Sunset;
 
 						// Let the history tracker know that the user just successfully looked up a postal code
-						var item = new HistoryItem(zipCodeEntry.Text, weather.Title, weather.IconUrl);
+						var item = new HistoryItem(zipCodeEntry.Text, weather.Title, weather.Icon);
 						MessagingCenter.Send(HistoryRecorder.Instance, HistoryRecorder.LocationSubmitted, item);
 					}
 				}
