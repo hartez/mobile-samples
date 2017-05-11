@@ -38,9 +38,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding LocationName}" VerticalOptions="Center"></Label>
-                            <Label Text="{Binding PostalCode}" VerticalOptions="Center" Grid.Column="1"></Label>
-                            <!--<Image Source="{Binding Icon}" Grid.Column="2"></Image>-->
-                            <Label Text="&#xF00D;" Grid.Column="2">
+                            <Label Text="{Binding PostalCode}" VerticalOptions="Center" Grid.Column="1" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Binding WeatherIcon}" Grid.Column="2" VerticalTextAlignment="Center">
                                 <Label.FontFamily>
                                     <OnPlatform x:TypeArguments="x:String">
                                         <On Platform="UWP" Value="/Assets/WeatherIcons.ttf#Weather Icons"></On>
